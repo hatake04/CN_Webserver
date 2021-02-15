@@ -1,9 +1,8 @@
 import java.io.*;
 import java.net.*;
 
-
-
-public class WebServer {
+public class WebServer 
+{
     public static void main(String[] args)
     {
         int portNumber = 0;
