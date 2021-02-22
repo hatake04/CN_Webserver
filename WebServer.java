@@ -26,7 +26,7 @@ public class WebServer
                     BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds the name of the file
                     String docLine;
                     while((docLine = br.readLine()) != null) //while loop reads the content of the document
-                        out.println(docLine);
+                        out.println(docLine); //sends the contents line by line to client
                 }
         } 
         catch(IOException e)
