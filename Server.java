@@ -18,23 +18,20 @@ public class WebServer
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));  // reads input from client
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);)
             {
-            System.out.println("Connected");     
             String line;
             
             while((line = in.readLine()) != null);
             {
                 inputString = line;
-                String[] str = inputString.split(" "); //splits string line based on white space
-                File file = new File(str[1]); // str1 element has the document's path/name to be opened
-            
-                BufferedReader br = new BufferedReader(new FileReader(file));
+                String[] str = inputString.split(" "); //splits string line based on white space --bug in this line??--
+                BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds name of file
                 String docLine;
                 while((docLine = br.readLine()) != null)
                     out.println(docLine);
                 br.close();
             }
                 
-            } 
+        } 
         catch(IOException e)
         {
             System.out.println("Exception caught when trying to listen on port " + portNumber
