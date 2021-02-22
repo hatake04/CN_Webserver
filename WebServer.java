@@ -6,7 +6,6 @@ public class WebServer
     public static void main(String[] args)
     {
         int portNumber;
-        String inputString;
         if(args.length != 1)
             portNumber = 80;    //default socket to listen
         else
@@ -17,20 +16,18 @@ public class WebServer
               
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));  // reads input from client
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);)
-            {
-            String line;
-            
-            while((line = in.readLine()) != null);
-            {
-                inputString = line;
-                String[] str = inputString.split(" "); //splits string line based on white space --bug in this line??--
-                BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds name of file
-                String docLine;
-                while((docLine = br.readLine()) != null) //reads the contents of the document
-                    out.println(docLine);
-                br.close();
-            }
-                
+        {
+                out.println("Connection established..."); 
+                String line;
+
+                while((line = in.readLine()) != null); //reads from user's keyboard until end of input character (CTRL-C)
+                {
+                    String[] str = line.split(" "); //splits string line based on white space --bug in this line--
+                    BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds the name of the file
+                    String docLine;
+                    while((docLine = br.readLine()) != null) //while loop reads the content of the document
+                        out.println(docLine);
+                }
         } 
         catch(IOException e)
         {
