@@ -26,7 +26,7 @@ public class WebServer
                 String[] str = inputString.split(" "); //splits string line based on white space --bug in this line??--
                 BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds name of file
                 String docLine;
-                while((docLine = br.readLine()) != null)
+                while((docLine = br.readLine()) != null) //reads the contents of the document
                     out.println(docLine);
                 br.close();
             }
@@ -38,6 +38,5 @@ public class WebServer
             + " or listening for a connection");
             System.out.println(e.getMessage());
         }
-
     }
 }
