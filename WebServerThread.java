@@ -6,8 +6,8 @@ public class WebServerThread extends Thread {
     private Socket socket;
 
     //HTTP status codes
-    final String BAD_REQUEST = "HTTP/1.0 404 Not Found\r\n";
-    final String OK = "HTTP/1.0 200 OK\r\n";
+    private final String BAD_REQUEST = "HTTP/1.0 404 Not Found\r\n";
+    private final String OK = "HTTP/1.0 200 OK\r\n";
 
     /**
      * WebServerThread Constructor
