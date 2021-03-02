@@ -42,7 +42,8 @@ public class WebServerThread extends Thread {
                 System.out.println("Preparing to send document...");
                 try
                 {
-                    BufferedReader br = new BufferedReader(new FileReader(str[1]));  //element 1 holds the name of the file
+                    String subStr = str[1].subString(1);
+                    BufferedReader br = new BufferedReader(new FileReader(subStr);  //element 1 holds the name of the file
                     while((docLine = br.readLine()) != null) //while loop reads the content of the document
                         doc += docLine; //Stores the whole document
                     out.println((doc += "\r\n")); //sends the contents line by line to client
