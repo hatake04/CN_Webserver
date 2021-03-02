@@ -38,14 +38,15 @@ public class WebServerThread extends Thread {
             while((line = in.readLine()) != null) //reads from user's keyboard until end of input character (CTRL-C)
             {
                 String[] str = line.split(" "); //splits string line based on white space 
-                String docLine, doc = OK;
+                String docLine, doc = "";
                 System.out.println("Preparing to send document...");
                 try
                 {
                     BufferedReader br = new BufferedReader(new FileReader(str[1]));;  //element 1 holds the name of the file
                     while((docLine = br.readLine()) != null) //while loop reads the content of the document
                         doc += docLine; //Stores the whole document
-                    out.println((doc += "\r\n")); //sends the contents line by line to client
+
+                    out.println(OK + doc); //sends the contents line by line to client
                     System.out.println("Document sent...");
                     br.close();
                 }
@@ -56,7 +57,6 @@ public class WebServerThread extends Thread {
                     System.exit(1);
                 }
             } 
-            System.out.println("Closing Connection...");
         }
         catch(IOException e)
         {System.out.println(e.getMessage());}
