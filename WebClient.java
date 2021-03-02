@@ -22,7 +22,7 @@ public class WebClient {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));) //client's socket in
         {
             out.println("Connection Established...");
-            String userInput, statusCode, serverResponse;
+            String userInput, serverResponse;
             
             while((userInput = stdIn.readLine()) != null) //reads line from keyboard
             {
@@ -31,20 +31,14 @@ public class WebClient {
                 //validates input from user. If the user's input is not valid terminates the program.
                 if(str[0].equals("GET")){
                     out.println(userInput); // sends input to server
-                    statusCode = in.readLine(); //Server response back
-
+                
                     //Checks for ok or bad requests http code. If the response from the servers is 200 it displays the contents of the document to client, Other-
                     //wise it terminates the program.
-                    if(statusCode.equals(OK)){
-                        System.out.println(statusCode); 
-                        serverResponse = in.readLine(); // reads and stores the contents of the document sent by the server.
+                    //if(statusCode.equals(OK)){
+                        serverResponse = in.readLine(); 
+                        serverResponse += "\n" + in.readLine(); // reads and stores the contents of the document sent by the server.
                         System.out.println(serverResponse);
-                    }
-                    else
-                    {
-                        System.out.println(statusCode);
-                        System.exit(1);
-                    }
+                    System.exit(1);
                 }
                 else{
                     System.err.println("HTTP 'GET' request method not provided");
